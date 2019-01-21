@@ -28,15 +28,6 @@
     return msg+"\n```";
   }
 
-  const getTwoDaysAgo = function( today ) {
-    today.setHours(today.getHours() + 9);
-    today.setDate(today.getDate()-2);
-    const y = today.getFullYear();
-    const m = ("0"+(today.getMonth()+1)).slice(-2);
-    const d = ("0"+(today.getDate())).slice(-2);
-    return new Date(`${y}-${m}-${d}T17:00:00.000Z`);
-  }
-
   const sendMessage = function( token, ch_name, msg ) {
     var https       = require('https');
     var querystring = require("querystring")
