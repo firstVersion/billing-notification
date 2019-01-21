@@ -69,11 +69,8 @@
    .on('data', chunk=>{ buffer=Buffer.concat([buffer, chunk]) }) // Loading file
    .on('finish',  ()=>{
       var dailyBillingJson = JSON.parse(buffer);
-      var latest = dailyBillingJson[dailyBillingJson.length-1].startTime;
-      console.log(old);
-      console.log(latest);
       dailyBillingJson.forEach((b)=>{
-        if (projectNames.indexOf(b.projectName) >= 0 && b.startTime == latest)
+        if (projectNames.indexOf(b.projectName) >= 0)
             costs[projectNames.indexOf(b.projectName)] += Number(b.cost.amount);
       });
       var message = createMessage(new Date(latest), projectNames, costs);
